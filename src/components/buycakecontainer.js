@@ -3,6 +3,15 @@ import { connect } from 'react-redux';
 import {buycake,fetchusers} from '../redux/actions/buycake';
 import Piechart from './piechart';
 import Barchart from './barchart';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect,
+    useHistory,
+    useLocation
+  } from "react-router-dom";
 
 const Buycake = (props)=>{
     console.log("buy cake props..",props);
@@ -35,6 +44,7 @@ const Buycake = (props)=>{
             <div>
                 <p>Total Cake : {props.numberOfcake}</p>
                 <button onClick={props.BuyCake}>Buy Cake</button>
+                <Link to="/login">login</Link>
             </div>
             <div className="row">
                 <div className="col-md-6">
