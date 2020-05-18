@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import thunk from 'redux-thunk';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { createStore, combineReducers ,applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import buyReducer from './redux/reducer/buycake';
+import IceReducer from './redux/reducer/buyice';
+import { composeWithDevTools } from 'redux-devtools-extension';
+const rootreducer = combineReducers({cake:buyReducer,ice:IceReducer})
+const store = createStore(rootreducer,composeWithDevTools(applyMiddleware(thunk)))
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
